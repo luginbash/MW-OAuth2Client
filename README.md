@@ -34,6 +34,7 @@ $wgOAuth2Client['configuration']['redirect_uri']           = ''; // URL for OAut
 
 $wgOAuth2Client['configuration']['username'] = 'username'; // JSON path to username
 $wgOAuth2Client['configuration']['email'] = 'email'; // JSON path to email
+$wgOAuth2Client['configuration']['realname'] = 'realname'; // JSON path to realname
 $wgOAuth2Client['configuration']['scopes'] = 'openid'; //Permissions
 ```
 
@@ -42,6 +43,8 @@ The **Redirect URI** for your wiki should be:
 ```
 http://your.wiki.domain/path/to/wiki/Special:OAuth2Client/callback
 ```
+
+If you are using Azure AD then it's required to use `openid` as scope. 
 
 Optional further configuration
 

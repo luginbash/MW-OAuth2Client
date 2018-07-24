@@ -143,7 +143,8 @@ class SpecialOAuth2Client extends SpecialPage {
 		global $wgOAuth2Client, $wgAuth, $wgRequest;
 
 		$username = $response[$wgOAuth2Client['configuration']['username']];
-		$email = $response[$wgOAuth2Client['configuration']['email']];
+    $email = $response[$wgOAuth2Client['configuration']['email']];
+    $realname =  $response[$wgOAuth2Client['configuration']['realname']];
 
 		$user = User::newFromName($username, 'creatable');
 		if (!$user) {
