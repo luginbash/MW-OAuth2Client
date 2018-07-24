@@ -145,6 +145,14 @@ class SpecialOAuth2Client extends SpecialPage {
 		$username = $response[$wgOAuth2Client['configuration']['username']];
     $email = $response[$wgOAuth2Client['configuration']['email']];
     $realname =  $response[$wgOAuth2Client['configuration']['realname']];
+    if (empty($username)){
+      throw new MWException('Could not get username, perhaps there\'s an error in your settings:');
+      die();
+    }
+    if (isset($wgOAuth2Client['configuration']['use_local_part']) AND  $wgOAuth2Client['configuration']['use_local_part']) {
+      $username = explode("@",$username); 
+      $username = $username['0'];
+    }
 
 		$user = User::newFromName($username, 'creatable');
 		if (!$user) {

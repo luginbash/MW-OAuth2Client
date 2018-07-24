@@ -43,10 +43,10 @@ $wgOAuth2Client['configuration']['access_token_endpoint']  = '';
 $wgOAuth2Client['configuration']['api_endpoint']           = '';
 $wgOAuth2Client['configuration']['redirect_uri']           = ''; 
 
-$wgOAuth2Client['configuration']['username'] = 'username';  
-$wgOAuth2Client['configuration']['email'] = 'email'; 
-$wgOAuth2Client['configuration']['realname'] = 'realname';  
-$wgOAuth2Client['configuration']['scopes'] = 'openid';
+$wgOAuth2Client['configuration']['username']       = 'username';  
+$wgOAuth2Client['configuration']['email']          = 'email'; 
+$wgOAuth2Client['configuration']['realname']       = 'realname';  
+$wgOAuth2Client['configuration']['scopes']         = 'openid';
 ```
 
 The **Redirect URI** for your wiki should be and constistent with the one on your provider:
@@ -59,13 +59,15 @@ If you are using Azure AD then it's required to use `openid` as scope.
 
 Optional further configuration
 
-```
+```php
 $wgOAuth2Client['configuration']['http_bearer_token'] = 'Bearer'; // Token to use in HTTP Authentication
 $wgOAuth2Client['configuration']['query_parameter_token'] = 'auth_token'; // query parameter to use
 
 $wgOAuth2Client['configuration']['service_name'] = 'Citizen Registry'; // the name of your service
 $wgOAuth2Client['configuration']['service_login_link_text'] = 'Login with StarMade'; // the text of the login link
 
+// remove @example.net part from the username, do not use with a multi-tenant provider 
+$wgOAuth2Client['configuration']['use_local_part'] = True; 
 ```
 
 ### Popup Window
